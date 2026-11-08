@@ -1,7 +1,7 @@
 ---
 title: Verbete Teste 07
 tags:
-  - categoria
+  - referencia
 autor: Autor(a) Fictício(a) 07
 instituicao: Instituição Fictícia 07
 ---

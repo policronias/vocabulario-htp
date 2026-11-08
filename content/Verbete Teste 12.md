@@ -1,7 +1,7 @@
 ---
 title: Verbete Teste 12
 tags:
-  - tema
+  - interface
 autor: Autor(a) Fictício(a) 12
 instituicao: Instituição Fictícia 12
 ---

@@ -1,7 +1,7 @@
 ---
 title: Verbete Teste 04
 tags:
-  - categoria
+  - referencia
 autor: Autor(a) Fictício(a) 04
 instituicao: Instituição Fictícia 04
 ---

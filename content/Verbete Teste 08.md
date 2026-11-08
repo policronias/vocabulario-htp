@@ -1,7 +1,7 @@
 ---
 title: Verbete Teste 08
 tags:
-  - conceito
+  - interface
 autor: Autor(a) Fictício(a) 08
 instituicao: Instituição Fictícia 08
 ---
