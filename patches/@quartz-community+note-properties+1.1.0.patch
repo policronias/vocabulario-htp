@@ -1,0 +1,50 @@
+diff --git a/node_modules/@quartz-community/note-properties/dist/components/index.js b/node_modules/@quartz-community/note-properties/dist/components/index.js
+index dbcec81..df9e34e 100644
+--- a/node_modules/@quartz-community/note-properties/dist/components/index.js
++++ b/node_modules/@quartz-community/note-properties/dist/components/index.js
+@@ -149,9 +149,19 @@ var en_US_default = {
+   }
+ };
+ 
++// src/i18n/locales/pt-BR.ts
++var pt_BR_default = {
++  components: {
++    noteProperties: {
++      title: "Propriedades"
++    }
++  }
++};
++
+ // src/i18n/index.ts
+ var locales = {
+-  "en-US": en_US_default
++  "en-US": en_US_default,
++  "pt-BR": pt_BR_default
+ };
+ function i18n(locale) {
+   return locales[locale] || en_US_default;
+diff --git a/node_modules/@quartz-community/note-properties/dist/index.js b/node_modules/@quartz-community/note-properties/dist/index.js
+index 9ea9360..795f6a7 100644
+--- a/node_modules/@quartz-community/note-properties/dist/index.js
++++ b/node_modules/@quartz-community/note-properties/dist/index.js
+@@ -12256,9 +12256,19 @@ var en_US_default = {
+   }
+ };
+ 
++// src/i18n/locales/pt-BR.ts
++var pt_BR_default = {
++  components: {
++    noteProperties: {
++      title: "Propriedades"
++    }
++  }
++};
++
+ // src/i18n/index.ts
+ var locales = {
+-  "en-US": en_US_default
++  "en-US": en_US_default,
++  "pt-BR": pt_BR_default
+ };
+ function i18n(locale) {
+   return locales[locale] || en_US_default;

@@ -1,0 +1,26 @@
+diff --git a/node_modules/@quartz-community/folder-page/dist/components/index.js b/node_modules/@quartz-community/folder-page/dist/components/index.js
+index 563efee..e2aa6ae 100644
+--- a/node_modules/@quartz-community/folder-page/dist/components/index.js
++++ b/node_modules/@quartz-community/folder-page/dist/components/index.js
+@@ -2590,7 +2590,7 @@ var pt_BR_default = {
+   pages: {
+     folderContent: {
+       folder: "Arquivo",
+-      itemsUnderFolder: ({ count }) => count === 1 ? "1 item neste arquivo." : `${count} items neste arquivo.`
++      itemsUnderFolder: ({ count }) => count === 1 ? "1 item neste arquivo." : `${count} itens neste arquivo.`
+     }
+   },
+   components: {}
+diff --git a/node_modules/@quartz-community/folder-page/dist/index.js b/node_modules/@quartz-community/folder-page/dist/index.js
+index 5a6e4f3..60632f6 100644
+--- a/node_modules/@quartz-community/folder-page/dist/index.js
++++ b/node_modules/@quartz-community/folder-page/dist/index.js
+@@ -2576,7 +2576,7 @@ var pt_BR_default = {
+   pages: {
+     folderContent: {
+       folder: "Arquivo",
+-      itemsUnderFolder: ({ count }) => count === 1 ? "1 item neste arquivo." : `${count} items neste arquivo.`
++      itemsUnderFolder: ({ count }) => count === 1 ? "1 item neste arquivo." : `${count} itens neste arquivo.`
+     }
+   },
+   components: {}
