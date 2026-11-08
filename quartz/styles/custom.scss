@@ -1,3 +1,156 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// =============================================================================
+// TIPOLOGIA DOS VERBETES NO GRAFO  (PROVISÓRIA: depende de confirmação da coordenação)
+//
+// ESTE É O ÚNICO LUGAR a editar para mudar os tipos de verbete do grafo.
+// O grafo (formas e cores dos nós) e a legenda leem estes mesmos valores.
+// Quem lê: o remendo do plugin de grafo, em patches/@quartz-community+graph+*.patch.
+//
+// Cada tipo é um bloco de 4 linhas, numerado (--tipo-1-..., --tipo-2-...):
+//   -tag     a tag do cabeçalho (frontmatter) do verbete que define o tipo
+//   -rotulo  o nome que aparece na legenda (entre aspas)
+//   -cor     a cor, em hexadecimal (escolha contraste de pelo menos 3 para 1
+//            contra os fundos #faf8f8 e #161618, para valer nos modos claro e escuro)
+//   -forma   circulo, quadrado, triangulo ou losango
+//
+// COMO MUDAR
+//   Renomear na legenda ou trocar cor/forma: altere o valor da linha.
+//   Acrescentar um tipo: copie um bloco, mude o número (--tipo-5-...) e os valores.
+//   Remover um tipo: apague o bloco. Pode ficar buraco na numeração.
+//   Forma nova (além das quatro): exige alterar o remendo do grafo.
+//
+// REGRAS DO GRAFO
+//   - Se o verbete tiver mais de uma tag de tipo, vale a PRIMEIRA escrita no cabeçalho.
+//   - Verbete sem tag de tipo, ou com tag que não está nesta lista, aparece em cinza
+//     (--tipo-sem-...) e entra na legenda como "Sem tipo" (só quando existe algum).
+//   - Páginas que não são verbetes (página inicial) aparecem como círculo cinza oco,
+//     sem entrada na legenda.
+//   - O nó da página aberta recebe um anel ao redor.
+// =============================================================================
+:root {
+  --tipo-1-tag: conceito;
+  --tipo-1-rotulo: "Conceitos e categorias";
+  --tipo-1-cor: #0072b2;
+  --tipo-1-forma: circulo;
+
+  --tipo-2-tag: tema;
+  --tipo-2-rotulo: "Temas";
+  --tipo-2-cor: #d55e00;
+  --tipo-2-forma: quadrado;
+
+  --tipo-3-tag: referencia;
+  --tipo-3-rotulo: "Referências";
+  --tipo-3-cor: #009e73;
+  --tipo-3-forma: triangulo;
+
+  --tipo-4-tag: interface;
+  --tipo-4-rotulo: "Interfaces";
+  --tipo-4-cor: #9b59b6;
+  --tipo-4-forma: losango;
+
+  // Verbete sem tipo (cinza; contraste 4,3 no fundo claro e 4,0 no escuro)
+  --tipo-sem-rotulo: "Sem tipo";
+  --tipo-sem-cor: #767676;
+
+  // Tamanho mínimo (raio, em pixels) dos símbolos, para as formas ficarem distinguíveis
+  --grafo-raio-minimo: 7;
+
+  // Tamanho do grafo na coluna da direita (altura em telas grandes e em telas menores)
+  // e largura dessa coluna em telas de 1200 pixels ou mais e de 1600 pixels ou mais.
+  // O tamanho dos títulos dos nós (fontSize) fica em quartz.config.yaml, no plugin do grafo.
+  --grafo-altura-local: 360px;
+  --grafo-altura-local-estreita: 300px;
+  --coluna-direita-1200: 380px;
+  --coluna-direita-1600: 460px;
+
+  // Linhas (ligações) do grafo, sempre visíveis. Cinza com contraste de 3,7 no fundo claro
+  // e 4,6 no escuro. Ao passar o mouse, as linhas do nó em foco ficam na cor de texto do tema.
+  --grafo-cor-ligacao: #808080;
+  --grafo-largura-ligacao: 1.5;
+
+  // Nome acessível da legenda (lido por leitores de tela)
+  --grafo-legenda-titulo: "Legenda do grafo";
+}
+
+// Aparência da legenda (a legenda em si é montada pelo grafo a partir da tabela acima)
+.graph-legenda {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--darkgray);
+
+  & li {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  & svg {
+    flex: none;
+  }
+}
+
+// No grafo global (tela cheia), a legenda fica no canto inferior esquerdo, sobre o fundo
+.global-graph-container > .graph-legenda {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  max-width: calc(100% - 1.5rem);
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 5px;
+}
+
+// -----------------------------------------------------------------------------
+// TAMANHO DO GRAFO (valores nas variáveis do bloco :root acima)
+// -----------------------------------------------------------------------------
+// Grafo pequeno, na coluna da direita
+.graph > .graph-outer {
+  height: var(--grafo-altura-local);
+}
+
+@media all and (max-width: 1199px) {
+  .graph > .graph-outer {
+    height: var(--grafo-altura-local-estreita);
+  }
+}
+
+// Coluna da direita mais larga em telas grandes (as variáveis não funcionam dentro da
+// condição @media, por isso 1200px e 1600px estão escritos aqui; são os pontos de corte).
+@media all and (min-width: 1200px) {
+  #quartz-body {
+    grid-template-columns: #{$sidePanelWidth} auto var(--coluna-direita-1200);
+  }
+}
+
+@media all and (min-width: 1600px) {
+  #quartz-body {
+    grid-template-columns: #{$sidePanelWidth} auto var(--coluna-direita-1600);
+  }
+}
+
+// Grafo global (tela cheia, aberto pelo ícone de rede ou por Ctrl+G): 90% da tela
+.graph > .global-graph-outer > .global-graph-container {
+  width: 90vw;
+  height: 90vh;
+}
+
+// Em telas estreitas (tablet e celular) o Quartz limita cada bloco da coluna lateral a 24rem
+// de altura; com o grafo maior e a legenda, isso cortaria ou sobreporia a legenda. Sem limite.
+@media all and (max-width: 1199px) {
+  #quartz-body .sidebar.right > * {
+    max-height: none;
+  }
+}

@@ -1,7 +1,7 @@
 ---
 title: Verbete Teste 11
 tags:
-  - conceito
+  - interface
 autor: Autor(a) Fictício(a) 11
 instituicao: Instituição Fictícia 11
 ---

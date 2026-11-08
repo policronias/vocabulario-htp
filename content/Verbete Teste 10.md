@@ -1,7 +1,7 @@
 ---
 title: Verbete Teste 10
 tags:
-  - categoria
+  - referencia
 autor: Autor(a) Fictício(a) 10
 instituicao: Instituição Fictícia 10
 ---
