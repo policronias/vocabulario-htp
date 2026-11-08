@@ -1,0 +1,26 @@
+diff --git a/node_modules/@quartz-community/tag-page/dist/components/index.js b/node_modules/@quartz-community/tag-page/dist/components/index.js
+index cd9a379..7a7962c 100644
+--- a/node_modules/@quartz-community/tag-page/dist/components/index.js
++++ b/node_modules/@quartz-community/tag-page/dist/components/index.js
+@@ -2635,7 +2635,7 @@ var pt_BR_default = {
+     tagContent: {
+       tag: "Tag",
+       tagIndex: "Sum\xE1rio de Tags",
+-      itemsUnderTag: ({ count }) => count === 1 ? "1 item com esta tag." : `${count} items com esta tag.`,
++      itemsUnderTag: ({ count }) => count === 1 ? "1 item com esta tag." : `${count} itens com esta tag.`,
+       showingFirst: ({ count }) => `Mostrando as ${count} primeiras tags.`,
+       totalTags: ({ count }) => `Encontradas ${count} tags.`
+     }
+diff --git a/node_modules/@quartz-community/tag-page/dist/index.js b/node_modules/@quartz-community/tag-page/dist/index.js
+index 6fc251d..a94b8ce 100644
+--- a/node_modules/@quartz-community/tag-page/dist/index.js
++++ b/node_modules/@quartz-community/tag-page/dist/index.js
+@@ -2619,7 +2619,7 @@ var pt_BR_default = {
+     tagContent: {
+       tag: "Tag",
+       tagIndex: "Sum\xE1rio de Tags",
+-      itemsUnderTag: ({ count }) => count === 1 ? "1 item com esta tag." : `${count} items com esta tag.`,
++      itemsUnderTag: ({ count }) => count === 1 ? "1 item com esta tag." : `${count} itens com esta tag.`,
+       showingFirst: ({ count }) => `Mostrando as ${count} primeiras tags.`,
+       totalTags: ({ count }) => `Encontradas ${count} tags.`
+     }

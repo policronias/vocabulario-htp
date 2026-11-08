@@ -20,6 +20,7 @@
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
     "prebuild": "npm run install-plugins",
+    "postinstall": "patch-package",
     "changeset": "changeset",
     "version-packages": "changeset version && npm install --package-lock-only --ignore-scripts --no-audit --no-fund"
   },
@@ -103,6 +104,7 @@
     "lightningcss": "^1.31.1",
     "micromorph": "^0.4.5",
     "minimatch": "^11.0.5",
+    "patch-package": "^8.0.1",
     "preact": "^10.28.2",
     "preact-render-to-string": "^6.6.5",
     "pretty-bytes": "^7.1.0",

@@ -1,0 +1,30 @@
+diff --git a/node_modules/@quartz-community/backlinks/dist/components/index.js b/node_modules/@quartz-community/backlinks/dist/components/index.js
+index 0ddc3de..c525254 100644
+--- a/node_modules/@quartz-community/backlinks/dist/components/index.js
++++ b/node_modules/@quartz-community/backlinks/dist/components/index.js
+@@ -217,8 +217,8 @@ var pl_PL_default = {
+ var pt_BR_default = {
+   components: {
+     backlinks: {
+-      title: "Backlinks",
+-      noBacklinksFound: "Sem backlinks encontrados"
++      title: "Verbetes que remetem a este",
++      noBacklinksFound: "Nenhum verbete remete a este"
+     }
+   }
+ };
+diff --git a/node_modules/@quartz-community/backlinks/dist/index.js b/node_modules/@quartz-community/backlinks/dist/index.js
+index 0ddc3de..c525254 100644
+--- a/node_modules/@quartz-community/backlinks/dist/index.js
++++ b/node_modules/@quartz-community/backlinks/dist/index.js
+@@ -217,8 +217,8 @@ var pl_PL_default = {
+ var pt_BR_default = {
+   components: {
+     backlinks: {
+-      title: "Backlinks",
+-      noBacklinksFound: "Sem backlinks encontrados"
++      title: "Verbetes que remetem a este",
++      noBacklinksFound: "Nenhum verbete remete a este"
+     }
+   }
+ };
