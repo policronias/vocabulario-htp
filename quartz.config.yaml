@@ -159,9 +159,15 @@ plugins:
         showTags: false
         fontSize: 0.9
         linkDistance: 65
+        opacityScale: 3
       globalGraph:
         showTags: false
         fontSize: 0.9
+        opacityScale: 3
+        enableRadial: false
+        repelForce: 1.2
+        centerForce: 0.1
+        linkDistance: 80
     layout:
       position: right
       priority: 10

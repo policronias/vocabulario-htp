@@ -165,3 +165,18 @@ Registro das mudanças técnicas na plataforma do Vocabulário de História do T
 - **Observação:** sem o Sumário, verbetes longos perdem a navegação por títulos. Para devolver: `enabled: true` no plugin `table-of-contents`. A coluna da direita fica só com o grafo; "Verbetes que remetem a este" continua no fim da página.
 - **Testes feitos (navegador, `quartz build --serve`, porta 8080):** o build rodou sem erro; na página do Verbete Teste 01 a coluna da direita tem apenas "Grafo conceitual", sem nenhum elemento ou texto de Sumário (conferido no código da página). Nenhum arquivo de `content/` ou de `patches/` foi tocado.
 - **Não testado:** celular real e publicação no GitHub Actions (nada foi enviado ao GitHub).
+
+## 2026-11-08. Grafo: rótulos aparecem com menos zoom e distribuição dos nós mais aberta
+
+- **Pedido:** como no Obsidian, os títulos dos nós deveriam aparecer conforme o zoom (e não só com zoom máximo), e nós e linhas deveriam ficar melhor distribuídos.
+- **Diagnóstico (lido no código do plugin, sem alterá-lo):**
+  - **Rótulos:** a transparência do título é `(zoom × opacityScale − 1) / 3,75`. Com `opacityScale` = 1 (padrão), o título é invisível em zoom 1 ou menos e só chega a 80% no zoom máximo (4). Por isso só aparecia "com muito zoom".
+  - **Distribuição:** no grafo global, o padrão do plugin liga uma força radial (`enableRadial: true`) que empurra todos os nós para um anel. A repulsão padrão também é fraca. O Obsidian não usa anel.
+- **Alterado, só em `quartz.config.yaml` (opções do plugin do grafo; o remendo em `patches/` não mudou):**
+  - grafo local: `opacityScale: 3`
+  - grafo global: `opacityScale: 3`, `enableRadial: false`, `repelForce: 1.2` (era 0,5), `centerForce: 0.1` (era 0,2), `linkDistance: 80` (era 30)
+- **Efeito do `opacityScale: 3`:** título a ~13% de opacidade em zoom 0,5; ~53% em zoom 1; 100% a partir de zoom ~1,6.
+- **Como ajustar depois:** mais rótulos visíveis = subir `opacityScale`; menos = descer. Nós mais afastados = subir `repelForce` ou `linkDistance`; mais agrupados = descer. Para voltar ao comportamento anterior: apagar as linhas acrescentadas.
+- **Limitação conhecida (não resolvida):** ao abrir o grafo, os títulos ainda começam invisíveis e aparecem na primeira rolada de zoom, porque o código do plugin só calcula a transparência quando ocorre um evento de zoom. Resolver exige alterar o remendo do grafo (uma linha), o que depende de autorização da coordenação.
+- **Testes feitos (navegador, `quartz build --serve`, porta 8080, janela de 1500 px):** grafo global sem anel, nós espalhados de modo irregular; com uma rolada de zoom, todos os títulos aparecem. Os valores foram conferidos no `data-cfg` do grafo local em execução.
+- **Não testado:** grafo local com zoom (o painel de teste corta a coluna da direita), celular real (pinça), efeito com o número real de verbetes (hoje são 12 de teste; a repulsão pode precisar de novo ajuste com 100 ou mais), e publicação no GitHub Actions.
