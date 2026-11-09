@@ -156,3 +156,12 @@ Registro das mudanças técnicas na plataforma do Vocabulário de História do T
 - **Teste feito pelo coordenador, no celular, no site publicado** (grafo original do plugin, sem nenhuma alteração desta etapa): resultado informado como "todo correto".
 - **Decisão:** **nenhuma alteração de código foi necessária para o item 2.** O comportamento do plugin original já atende ao pedido no computador e no celular. O remendo do grafo desta etapa não mexe nesse comportamento.
 - **Observação:** o teste foi feito no grafo original, que ainda tinha as bolinhas de tag e o tamanho antigo dos nós. Como o remendo e o tamanho novos não alteram o tratamento de toque, não se espera diferença; vale repetir o toque longo uma vez no site publicado depois do merge, junto com a conferência das novidades.
+
+## 2026-11-08. Sumário removido da coluna da direita (de novo)
+
+- **Pedido:** a coordenação decidiu que, ao menos neste momento, não quer a área "Sumário" na parte inferior da coluna da direita.
+- **Alterado, `quartz.config.yaml`:** plugin `table-of-contents` (Sumário): `enabled: false` (era `true`). Só essa linha mudou.
+- **Por que assim:** desligar o plugin remove o Sumário de todas as páginas sem apagar nada. A decisão é reversível.
+- **Observação:** sem o Sumário, verbetes longos perdem a navegação por títulos. Para devolver: `enabled: true` no plugin `table-of-contents`. A coluna da direita fica só com o grafo; "Verbetes que remetem a este" continua no fim da página.
+- **Testes feitos (navegador, `quartz build --serve`, porta 8080):** o build rodou sem erro; na página do Verbete Teste 01 a coluna da direita tem apenas "Grafo conceitual", sem nenhum elemento ou texto de Sumário (conferido no código da página). Nenhum arquivo de `content/` ou de `patches/` foi tocado.
+- **Não testado:** celular real e publicação no GitHub Actions (nada foi enviado ao GitHub).
